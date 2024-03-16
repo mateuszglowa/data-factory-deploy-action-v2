@@ -54,6 +54,9 @@ function Get-SortedPipelines {
         [string] $ResourceGroupName
     )
     $pipelines = Get-AzDataFactoryV2Pipeline -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    Write-Host "Print Pipelines!"
+    Write-Host $pipelines`
+
     $ppDict = @{}
     $visited = @{}
     $stack = new-object System.Collections.Stack

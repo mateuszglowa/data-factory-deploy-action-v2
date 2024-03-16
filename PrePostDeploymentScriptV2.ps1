@@ -633,6 +633,7 @@ try {
         }
     }
     else {
+        #Deployment entry point
         #Deleted resources
         #pipelines
         Write-Host "Getting pipelines"
