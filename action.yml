@@ -29,12 +29,12 @@ runs:
   using: 'composite'
   steps:
     - name: Install Az PowerShell module
-      run: if('${{ inputs.skipAzModuleInstallation }}' -ne 'true') { Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -AllowClobber -Force;  }
+      run: if('${{ inputs.skipAzModuleInstallation }}' -ne 'true') { Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -RequiredVersion 11.4.0 -AllowClobber -Force;  }
       shell: pwsh
 
-    - name: Install Az PowerShell module
-      run: Update-PSResource Az
-      shell: pwsh
+    # - name: Install Az PowerShell module
+    #   run: Update-PSResource Az
+    #   shell: pwsh
 
     - name: Run Pre-deployment script
       run: |
