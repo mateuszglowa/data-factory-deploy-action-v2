@@ -53,13 +53,12 @@ function Get-SortedPipelines {
         [string] $DataFactoryName,
         [string] $ResourceGroupName
     )
-    Write-Host "Check PowerShell version"
-    $PSVersionTable.PSVersion
+
+    Write-Host "$DataFactoryName and RG name $ResourceGroupName"
 
     $pipelines = Get-AzDataFactoryV2Pipeline -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
     
-    Write-Host "Print Pipelines!"
-    $pipelines
+    Write-Host "after the Get-AzDataFactoryV2Pipeline cmd"
 
     $ppDict = @{}
     $visited = @{}
