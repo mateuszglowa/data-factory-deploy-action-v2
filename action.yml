@@ -29,14 +29,9 @@ runs:
   using: 'composite'
   steps:
     - name: Install Az PowerShell module
-      run: if('${{ inputs.skipAzModuleInstallation }}' -ne 'true') { Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force }
+      run: if('${{ inputs.skipAzModuleInstallation }}' -ne 'true') { Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -AllowClobber -Force }
       shell: pwsh
 
-    - name: Upgrade pwsh (Linux)
-      if: runner.os	== 'Linux'
-      run: sudo apt-get install --only-upgrade powershell
-      shell: pwsh
-      
     - name: Run Pre-deployment script
       run: |
         ${{ github.action_path }}/PrePostDeploymentScript.ps1 `
