@@ -53,9 +53,11 @@ function Get-SortedPipelines {
         [string] $DataFactoryName,
         [string] $ResourceGroupName
     )
+    
+    $psversion = $PSVersionTable.PSVersion
 
-    Write-Host "$DataFactoryName and RG name $ResourceGroupName"
-
+    Write-Host "$DataFactoryName and RG name $ResourceGroupName, and PS version $psversion"
+    $psversion
     $pipelines = Get-AzDataFactoryV2Pipeline -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
     
     Write-Host "after the Get-AzDataFactoryV2Pipeline cmd"
