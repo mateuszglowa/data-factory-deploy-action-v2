@@ -32,9 +32,9 @@ runs:
       run: if('${{ inputs.skipAzModuleInstallation }}' -ne 'true') { Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -RequiredVersion 11.4.0 -AllowClobber -Force;  }
       shell: pwsh
 
-    # - name: Install Az PowerShell module
-    #   run: Update-PSResource Az
-    #   shell: pwsh
+    - name: Get PS Data Factory module
+      run: Get-InstalledModule -name 'Az.DataFactory'
+      shell: pwsh
 
     - name: Run Pre-deployment script
       run: |
