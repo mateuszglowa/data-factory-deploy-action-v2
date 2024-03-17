@@ -32,6 +32,11 @@ runs:
       run: if('${{ inputs.skipAzModuleInstallation }}' -ne 'true') { Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force }
       shell: pwsh
 
+    - name: Upgrade pwsh (Linux)
+      if: runner.os	== 'Linux'
+      run: sudo apt-get install --only-upgrade powershell
+      shell: pwsh
+      
     - name: Run Pre-deployment script
       run: |
         ${{ github.action_path }}/PrePostDeploymentScript.ps1 `
