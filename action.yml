@@ -29,11 +29,14 @@ runs:
   using: 'composite'
   steps:
     - name: Install Az PowerShell module
-      run: Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -RequiredVersion 11.4.0 -AllowClobber -Force
+      run: Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -AllowClobber -Force
       shell: pwsh
 
     - name: Get PS Data Factory module
-      run: Get-InstalledModule -name 'Az.DataFactory'
+      run: |
+        Get-InstalledModule -Name 'Az.DataFactory';
+        Get-InstalledModule -Name Az.DataFactory |Update-Module -Force;
+        Get-InstalledModule -Name 'Az.DataFactory';
       shell: pwsh
 
     - name: Run Pre-deployment script
